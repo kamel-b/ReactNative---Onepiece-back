@@ -25,7 +25,7 @@ router.get ('/', (req, res) =>{
         const id = req.params.id;
         const formData = req.body;
         
-        
+
         connection.query('', [formData, id], err => {
         
           if (err) {
@@ -39,3 +39,21 @@ router.get ('/', (req, res) =>{
           }
         });
     });
+
+
+    router.delete('/:id', (req, res) => {
+        const idmaintheme = req.params.id;
+        
+        connection.query('DELETE FROM main_theme WHERE id = ?', [idmaintheme], err => {
+           
+            if (err) {
+              console.log(err);
+              res.status(500).send("Erreur lors de la suppression d'un id main_theme");
+            } 
+            else {
+              res.sendStatus(200);
+            }
+        
+          });
+        
+        });
