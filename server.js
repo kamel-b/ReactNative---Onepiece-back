@@ -3,7 +3,7 @@ const bodyParser = require('body-parser')
 const morgan = require('morgan')
 const cors = require('cors')
 
-const routes =require('.routes/index')
+const routes =require('./routes/index')
 
 const app = express()
 const port = 4242
@@ -18,6 +18,8 @@ app.use(bodyParser.json())
 
 
 
+app.use("/character", routes.character)
+app.use("/addCharacter", routes.addCharacter)
 
 
 app.get('/', (req, res)=>{
